@@ -1,0 +1,144 @@
+/*
+ Title:Animation Button
+
+  Version:1.0 v
+
+  Developer: Ashkan Salehpour
+
+  Date:11/10/2022
+
+  Description: Button hover effect with smooth animation . (HTML / CSS)
+*/
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #29272a;
+}
+/* Giving style to our text  */
+a
+{
+    position: relative;
+    width: 200px;
+    height: 60px;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff80;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+a::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background: #359ad8;
+    transform: scaleX(0);
+    /*transform: scaleX(0) : work for blue part which is come after hovering the button . Now it is 0 and it mean , the blue part doesn't come until transform: scaleX(0) goes to transform: scaleX(1)  */
+    transition: transform 0.5s ease-in-out;
+    transform-origin: right;
+    /* transform-origin:right mean blue part ends in right part of button */
+}
+
+a:hover::before
+{
+    transform: scaleX(1);
+    transform-origin: left;
+       /* transform-origin:left mean blue part starts in left part of button */
+}
+a span
+{
+    display: inline-block;
+    z-index: 2;
+    transition: 0.5s ease-in-out;
+}
+
+a:hover span
+{
+    color: #333;
+}
+
+/* Creating our arrow */
+/* Making arrow Big horizontal line */
+a i
+{
+    position: relative;
+    display: inline-block;
+    width: 2px;
+    height:30px;
+    background: #d3d636;
+    transition: 0.5s, width 0.5s, height 0.5s;
+    transition-delay:0s, 0.5s ,1s ;
+}
+a:hover i 
+{
+    width: 30px;
+    height: 2px;
+    background: #333;
+    transition-delay:0s, 1s ,0.5s ;
+}
+
+/* Making arrow 2 little arrow line in end of it */
+
+/* top line */
+a i::before
+{
+    content: '';
+    position: absolute;
+    top: 0.5px;
+    right: 0;
+    width: 40%;
+    height: 1.5px;
+    background: transparent;
+    rotate: 0;
+    transform-origin: right;
+    transition: 1s;
+}
+a:hover i::before
+{
+    background: #333;
+    rotate: 45deg;
+    transition-delay: 1.5s;
+}
+
+/* bottom line */
+
+a i::after
+{
+    content: '';
+    position: absolute;
+    top: 0.5px;
+    right: 0;
+    width: 40%;
+    height: 1.5px;
+    background: transparent;
+    rotate: 0;
+    transform-origin: right;
+    transition: 1s;
+}
+a:hover i::after
+{
+    background: #333;
+    rotate: -45deg;
+    transition-delay: 1.5s;
+}
+
